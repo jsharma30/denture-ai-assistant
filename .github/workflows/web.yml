@@ -1,0 +1,39 @@
+name: Browser app — test and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci || npm install
+      - name: Engine unit tests
+        run: npm test
+      - name: Browser end-to-end test
+        run: |
+          npx playwright install --with-deps chromium
+          python3 -m http.server 8080 &
+          sleep 2
+          npm run e2e
+      - name: Publish web/ to the gh-pages branch (GitHub Pages)
+        if: github.event_name != 'pull_request'
+        working-directory: .
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git subtree split --prefix web -b pages-tmp
+          git push origin pages-tmp:gh-pages
