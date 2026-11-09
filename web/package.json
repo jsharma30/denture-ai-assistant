@@ -1,0 +1,13 @@
+{
+  "name": "denture-ai-assistant-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/engine.test.mjs",
+    "serve": "npx --yes http-server -p 8080 -c-1 .",
+    "e2e": "node tests/app.e2e.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  }
+}
