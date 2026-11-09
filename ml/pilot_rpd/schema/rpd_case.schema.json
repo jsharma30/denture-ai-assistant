@@ -1,0 +1,692 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsharma30/denture-ai-assistant/ml/pilot_rpd/schema/rpd_case.schema.json",
+  "title": "Acrylic RPD pilot case",
+  "description": "One de-identified pilot case: 5 photos, their annotations and the expert grades. Protocol v1.0. Contains no patient-identifying fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "protocol_version",
+    "consent",
+    "prosthesis",
+    "arch",
+    "kennedy_class",
+    "replaced_teeth",
+    "setting",
+    "photos"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^RPD-\\d{3}$",
+      "description": "Pilot ID only, never a hospital number"
+    },
+    "protocol_version": {
+      "const": "1.0"
+    },
+    "consent": {
+      "const": true,
+      "description": "Cases without educational-use consent must not be stored"
+    },
+    "prosthesis": {
+      "const": "acrylic_rpd"
+    },
+    "arch": {
+      "enum": [
+        "maxillary",
+        "mandibular"
+      ]
+    },
+    "kennedy_class": {
+      "enum": [
+        "I",
+        "II",
+        "III",
+        "IV"
+      ]
+    },
+    "modifications": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "replaced_teeth": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "enum": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "setting": {
+      "enum": [
+        "cast",
+        "intraoral"
+      ]
+    },
+    "has_ruler": {
+      "type": "boolean"
+    },
+    "double_annotated": {
+      "type": "boolean"
+    },
+    "photos": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "1_maxillary_arch",
+        "2_mandibular_arch",
+        "3_anterior",
+        "4_replacement_region",
+        "5_replacement_occlusion"
+      ],
+      "properties": {
+        "1_maxillary_arch": {
+          "$ref": "#/$defs/photo"
+        },
+        "2_mandibular_arch": {
+          "$ref": "#/$defs/photo"
+        },
+        "3_anterior": {
+          "$ref": "#/$defs/photo"
+        },
+        "4_replacement_region": {
+          "$ref": "#/$defs/photo"
+        },
+        "5_replacement_occlusion": {
+          "$ref": "#/$defs/photo"
+        }
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/assessment"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 500
+    }
+  },
+  "$defs": {
+    "photo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "sha256",
+        "width",
+        "height",
+        "annotations"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "pattern": "^RPD-\\d{3}_[1-5]_[a-z_]+\\.(jpg|jpeg|png|heic)$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "Hash of the untouched original"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "mirrored": {
+          "type": "boolean"
+        },
+        "quality": {
+          "enum": [
+            "good",
+            "usable",
+            "retake"
+          ]
+        },
+        "not_visible": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "TOOTH",
+              "DENTURE_BASE",
+              "EDENTULOUS_SPACE",
+              "CLASP",
+              "EDENTULOUS_RIDGE",
+              "ARCH_MIDLINE",
+              "DENTAL_MIDLINE",
+              "MANDIBULAR_DENTAL_MIDLINE",
+              "REFERENCE_MIDLINE",
+              "OCCLUSAL_PLANE",
+              "CALIBRATION_MARKER",
+              "INCISIVE_PAPILLA",
+              "CANINE_TIP",
+              "MOLAR_MB_CUSP",
+              "OCCLUSAL_CONTACT"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/annotation"
+          }
+        },
+        "qc": {
+          "$ref": "#/$defs/qc"
+        }
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "required": [
+        "label",
+        "shape"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "enum": [
+            "TOOTH",
+            "DENTURE_BASE",
+            "EDENTULOUS_SPACE",
+            "CLASP",
+            "EDENTULOUS_RIDGE",
+            "ARCH_MIDLINE",
+            "DENTAL_MIDLINE",
+            "MANDIBULAR_DENTAL_MIDLINE",
+            "REFERENCE_MIDLINE",
+            "OCCLUSAL_PLANE",
+            "CALIBRATION_MARKER",
+            "INCISIVE_PAPILLA",
+            "CANINE_TIP",
+            "MOLAR_MB_CUSP",
+            "OCCLUSAL_CONTACT"
+          ]
+        },
+        "shape": {
+          "enum": [
+            "rotated_box",
+            "polygon",
+            "polyline",
+            "point"
+          ]
+        },
+        "box": {
+          "type": "object",
+          "description": "Rotated box in original-image pixels",
+          "required": [
+            "cx",
+            "cy",
+            "w",
+            "h",
+            "angle_deg"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "cx": {
+              "type": "number"
+            },
+            "cy": {
+              "type": "number"
+            },
+            "w": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "h": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "angle_deg": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          }
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "fdi": {
+              "type": "integer",
+              "enum": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48
+              ]
+            },
+            "kind": {
+              "enum": [
+                "natural",
+                "artificial"
+              ]
+            },
+            "visibility": {
+              "enum": [
+                "full",
+                "partial"
+              ]
+            },
+            "fdi_uncertain": {
+              "type": "boolean"
+            },
+            "replaced_teeth": {
+              "type": "string",
+              "pattern": "^\\d{2}(,\\d{2})*$"
+            },
+            "abutment": {
+              "type": "integer",
+              "enum": [
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48
+              ]
+            },
+            "type": {
+              "enum": [
+                "circumferential",
+                "adams",
+                "ball_ended",
+                "other"
+              ]
+            },
+            "length_mm": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "shape": {
+                "const": "rotated_box"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "box"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "shape": {
+                "const": "point"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "points"
+            ],
+            "properties": {
+              "points": {
+                "maxItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "shape": {
+                "const": "polyline"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "points"
+            ],
+            "properties": {
+              "points": {
+                "minItems": 2
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "shape": {
+                "const": "polygon"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "points"
+            ],
+            "properties": {
+              "points": {
+                "minItems": 3
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "label": {
+                "const": "TOOTH"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "shape": {
+                "const": "rotated_box"
+              },
+              "attributes": {
+                "required": [
+                  "fdi",
+                  "kind",
+                  "visibility"
+                ]
+              }
+            },
+            "required": [
+              "attributes"
+            ]
+          }
+        }
+      ]
+    },
+    "qc": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "fdi_checked": {
+          "type": "boolean"
+        },
+        "boxes_ok": {
+          "type": "boolean"
+        },
+        "points_ok": {
+          "type": "boolean"
+        },
+        "point_order_ok": {
+          "type": "boolean"
+        },
+        "original_only_renamed": {
+          "type": "boolean"
+        },
+        "accepted": {
+          "type": "boolean"
+        },
+        "reviewer_id": {
+          "type": "string",
+          "pattern": "^[A-Z]{1,4}\\d{0,3}$",
+          "description": "Initials/code, not a full name"
+        }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fdi",
+        "grader_id",
+        "grades"
+      ],
+      "properties": {
+        "fdi": {
+          "type": "integer",
+          "enum": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48
+          ]
+        },
+        "grader_id": {
+          "type": "string",
+          "pattern": "^[A-Z]{1,4}\\d{0,3}$"
+        },
+        "grades": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "space_fit",
+            "arch_alignment",
+            "ridge_relation",
+            "inclination",
+            "occlusal_plane",
+            "occlusal_contact",
+            "midline_symmetry"
+          ],
+          "properties": {
+            "space_fit": {
+              "enum": [
+                "Acceptable",
+                "Minor deviation",
+                "Significant deviation",
+                "Cannot assess"
+              ]
+            },
+            "arch_alignment": {
+              "enum": [
+                "Acceptable",
+                "Minor deviation",
+                "Significant deviation",
+                "Cannot assess"
+              ]
+            },
+            "ridge_relation": {
+              "enum": [
+                "Acceptable",
+                "Minor deviation",
+                "Significant deviation",
+                "Cannot assess"
+              ]
+            },
+            "inclination": {
+              "enum": [
+                "Acceptable",
+                "Minor deviation",
+                "Significant deviation",
+                "Cannot assess"
+              ]
+            },
+            "occlusal_plane": {
+              "enum": [
+                "Acceptable",
+                "Minor deviation",
+                "Significant deviation",
+                "Cannot assess"
+              ]
+            },
+            "occlusal_contact": {
+              "enum": [
+                "Acceptable",
+                "Minor deviation",
+                "Significant deviation",
+                "Cannot assess"
+              ]
+            },
+            "midline_symmetry": {
+              "enum": [
+                "Acceptable",
+                "Minor deviation",
+                "Significant deviation",
+                "Cannot assess"
+              ]
+            }
+          }
+        },
+        "measurements": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gap_mm": {
+              "type": "number"
+            },
+            "arch_offset_mm": {
+              "type": "number"
+            },
+            "ridge_offset_mm": {
+              "type": "number"
+            },
+            "inclination_deg": {
+              "type": "number"
+            },
+            "plane_step_mm": {
+              "type": "number"
+            },
+            "midline_offset_mm": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}

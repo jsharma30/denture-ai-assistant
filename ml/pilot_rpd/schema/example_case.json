@@ -1,0 +1,356 @@
+{
+  "case_id": "RPD-000",
+  "protocol_version": "1.0",
+  "consent": true,
+  "prosthesis": "acrylic_rpd",
+  "arch": "maxillary",
+  "kennedy_class": "III",
+  "modifications": 0,
+  "replaced_teeth": [
+    14,
+    15
+  ],
+  "setting": "cast",
+  "has_ruler": true,
+  "photos": {
+    "1_maxillary_arch": {
+      "file": "RPD-000_1_maxillary_arch.jpg",
+      "sha256": "eb200ad32955bf513929a28aa940e169b41451689af855144c745f9333d9c9ef",
+      "width": 4032,
+      "height": 3024,
+      "annotations": [
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 13,
+            "kind": "natural",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 14,
+            "kind": "artificial",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "ARCH_MIDLINE",
+          "shape": "polyline",
+          "points": [
+            [
+              2016,
+              600
+            ],
+            [
+              2016,
+              2600
+            ]
+          ]
+        }
+      ],
+      "qc": {
+        "complete": true,
+        "fdi_checked": true,
+        "boxes_ok": true,
+        "points_ok": true,
+        "point_order_ok": true,
+        "original_only_renamed": true,
+        "accepted": true,
+        "reviewer_id": "RV1"
+      }
+    },
+    "2_mandibular_arch": {
+      "file": "RPD-000_2_mandibular_arch.jpg",
+      "sha256": "97dc37eb21a722d33e59642fb992f7e50bb9043d9fd05f46a9c7f4b15faf81b8",
+      "width": 4032,
+      "height": 3024,
+      "annotations": [
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 13,
+            "kind": "natural",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 14,
+            "kind": "artificial",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "ARCH_MIDLINE",
+          "shape": "polyline",
+          "points": [
+            [
+              2016,
+              600
+            ],
+            [
+              2016,
+              2600
+            ]
+          ]
+        }
+      ],
+      "qc": {
+        "complete": true,
+        "fdi_checked": true,
+        "boxes_ok": true,
+        "points_ok": true,
+        "point_order_ok": true,
+        "original_only_renamed": true,
+        "accepted": true,
+        "reviewer_id": "RV1"
+      }
+    },
+    "3_anterior": {
+      "file": "RPD-000_3_anterior.jpg",
+      "sha256": "3401d8f4e14dde3f63636b03f2ddfa7ce9a2fe7b93d27f92ef9c414e35ed1983",
+      "width": 4032,
+      "height": 3024,
+      "annotations": [
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 13,
+            "kind": "natural",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 14,
+            "kind": "artificial",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "ARCH_MIDLINE",
+          "shape": "polyline",
+          "points": [
+            [
+              2016,
+              600
+            ],
+            [
+              2016,
+              2600
+            ]
+          ]
+        }
+      ],
+      "qc": {
+        "complete": true,
+        "fdi_checked": true,
+        "boxes_ok": true,
+        "points_ok": true,
+        "point_order_ok": true,
+        "original_only_renamed": true,
+        "accepted": true,
+        "reviewer_id": "RV1"
+      }
+    },
+    "4_replacement_region": {
+      "file": "RPD-000_4_replacement_region.jpg",
+      "sha256": "ffc1ef1ea31d0e71df2c00b110151ef9b614355524f8a3ffb619e6e11b6a74d2",
+      "width": 4032,
+      "height": 3024,
+      "annotations": [
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 13,
+            "kind": "natural",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 14,
+            "kind": "artificial",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "ARCH_MIDLINE",
+          "shape": "polyline",
+          "points": [
+            [
+              2016,
+              600
+            ],
+            [
+              2016,
+              2600
+            ]
+          ]
+        }
+      ],
+      "qc": {
+        "complete": true,
+        "fdi_checked": true,
+        "boxes_ok": true,
+        "points_ok": true,
+        "point_order_ok": true,
+        "original_only_renamed": true,
+        "accepted": true,
+        "reviewer_id": "RV1"
+      }
+    },
+    "5_replacement_occlusion": {
+      "file": "RPD-000_5_replacement_occlusion.jpg",
+      "sha256": "fcde7d2dabe1875b59cde70e128abec04dccd09fae576dde9c2003675ea85956",
+      "width": 4032,
+      "height": 3024,
+      "annotations": [
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 13,
+            "kind": "natural",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "TOOTH",
+          "shape": "rotated_box",
+          "box": {
+            "cx": 2000,
+            "cy": 1500,
+            "w": 300,
+            "h": 420,
+            "angle_deg": -4
+          },
+          "attributes": {
+            "fdi": 14,
+            "kind": "artificial",
+            "visibility": "full"
+          }
+        },
+        {
+          "label": "ARCH_MIDLINE",
+          "shape": "polyline",
+          "points": [
+            [
+              2016,
+              600
+            ],
+            [
+              2016,
+              2600
+            ]
+          ]
+        }
+      ],
+      "qc": {
+        "complete": true,
+        "fdi_checked": true,
+        "boxes_ok": true,
+        "points_ok": true,
+        "point_order_ok": true,
+        "original_only_renamed": true,
+        "accepted": true,
+        "reviewer_id": "RV1"
+      }
+    }
+  },
+  "assessments": [
+    {
+      "fdi": 14,
+      "grader_id": "IN1",
+      "grades": {
+        "space_fit": "Acceptable",
+        "arch_alignment": "Minor deviation",
+        "ridge_relation": "Acceptable",
+        "inclination": "Acceptable",
+        "occlusal_plane": "Acceptable",
+        "occlusal_contact": "Acceptable",
+        "midline_symmetry": "Cannot assess"
+      },
+      "measurements": {
+        "gap_mm": 0.3
+      }
+    }
+  ],
+  "notes": "Example record (not a real patient)."
+}

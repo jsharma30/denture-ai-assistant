@@ -8,3 +8,7 @@ local.properties
 *.apk
 web/tests/shots/
 .DS_Store
+
+# Real patient case folders are never committed; only the example is.
+ml/pilot_rpd/cases/*
+!ml/pilot_rpd/cases/RPD-000_EXAMPLE/

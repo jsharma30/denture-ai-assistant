@@ -1,0 +1,304 @@
+[
+  {
+    "name": "TOOTH",
+    "color": "#1f77b4",
+    "type": "rectangle",
+    "attributes": [
+      {
+        "name": "fdi",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "11",
+        "values": [
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48"
+        ]
+      },
+      {
+        "name": "kind",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "natural",
+        "values": [
+          "natural",
+          "artificial"
+        ]
+      },
+      {
+        "name": "visibility",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "full",
+        "values": [
+          "full",
+          "partial"
+        ]
+      },
+      {
+        "name": "fdi_uncertain",
+        "mutable": false,
+        "input_type": "checkbox",
+        "default_value": "false",
+        "values": [
+          "false"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "DENTURE_BASE",
+    "color": "#e377c2",
+    "type": "polygon",
+    "attributes": []
+  },
+  {
+    "name": "EDENTULOUS_SPACE",
+    "color": "#ff7f0e",
+    "type": "polygon",
+    "attributes": [
+      {
+        "name": "replaced_teeth",
+        "mutable": false,
+        "input_type": "text",
+        "default_value": "",
+        "values": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CLASP",
+    "color": "#7f7f7f",
+    "type": "polyline",
+    "attributes": [
+      {
+        "name": "abutment",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "14",
+        "values": [
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48"
+        ]
+      },
+      {
+        "name": "type",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "circumferential",
+        "values": [
+          "circumferential",
+          "adams",
+          "ball_ended",
+          "other"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "EDENTULOUS_RIDGE",
+    "color": "#8c564b",
+    "type": "polyline",
+    "attributes": []
+  },
+  {
+    "name": "ARCH_MIDLINE",
+    "color": "#2ca02c",
+    "type": "polyline",
+    "attributes": []
+  },
+  {
+    "name": "DENTAL_MIDLINE",
+    "color": "#d62728",
+    "type": "polyline",
+    "attributes": []
+  },
+  {
+    "name": "MANDIBULAR_DENTAL_MIDLINE",
+    "color": "#9467bd",
+    "type": "polyline",
+    "attributes": []
+  },
+  {
+    "name": "REFERENCE_MIDLINE",
+    "color": "#17becf",
+    "type": "polyline",
+    "attributes": []
+  },
+  {
+    "name": "OCCLUSAL_PLANE",
+    "color": "#bcbd22",
+    "type": "polyline",
+    "attributes": []
+  },
+  {
+    "name": "CALIBRATION_MARKER",
+    "color": "#000000",
+    "type": "polyline",
+    "attributes": [
+      {
+        "name": "length_mm",
+        "mutable": false,
+        "input_type": "number",
+        "default_value": "10",
+        "values": [
+          "1",
+          "50",
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "INCISIVE_PAPILLA",
+    "color": "#ff9896",
+    "type": "points",
+    "attributes": []
+  },
+  {
+    "name": "CANINE_TIP",
+    "color": "#aec7e8",
+    "type": "points",
+    "attributes": [
+      {
+        "name": "fdi",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "13",
+        "values": [
+          "13",
+          "23",
+          "33",
+          "43"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOLAR_MB_CUSP",
+    "color": "#98df8a",
+    "type": "points",
+    "attributes": [
+      {
+        "name": "fdi",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "16",
+        "values": [
+          "16",
+          "26",
+          "36",
+          "46"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OCCLUSAL_CONTACT",
+    "color": "#c5b0d5",
+    "type": "points",
+    "attributes": [
+      {
+        "name": "fdi",
+        "mutable": false,
+        "input_type": "select",
+        "default_value": "14",
+        "values": [
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48"
+        ]
+      }
+    ]
+  }
+]
