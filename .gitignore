@@ -1,0 +1,10 @@
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+build/
+.gradle/
+local.properties
+*.apk
+web/tests/shots/
+.DS_Store
