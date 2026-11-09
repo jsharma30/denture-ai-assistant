@@ -7,10 +7,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  test-and-publish:
+  test:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -29,11 +35,26 @@ jobs:
           python3 -m http.server 8080 &
           sleep 2
           npm run e2e
-      - name: Publish web/ to the gh-pages branch (GitHub Pages)
+      - name: Package the website
         if: github.event_name != 'pull_request'
         working-directory: .
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git subtree split --prefix web -b pages-tmp
-          git push origin pages-tmp:gh-pages
+          mkdir -p _site
+          cp -r web/index.html web/app.js web/styles.css web/engine web/reference _site/
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: _site
+
+  # Needs GitHub Pages switched on once: Settings -> Pages -> Source: "GitHub Actions".
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: test
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
